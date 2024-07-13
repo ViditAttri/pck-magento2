@@ -1,0 +1,17 @@
+<div data-bind="scope: 'payment_method_stripe_payments'"><!-- ko template: getTemplate() --><!-- /ko --></div><script type="application/javascript">
+  
+  window.initParams = <?= $block->getInitParams();  ?>;
+
+  require([ 'uiLayout' ], function (layout)
+  {
+      layout([
+          {
+              component: 'StripeIntegration_Payments/js/view/ui_components/setup_element',
+              name: 'payment_method_stripe_payments',
+              method: 'stripe_payments',
+              item: {
+                  method: 'stripe_payments'
+              }
+          }
+      ]);
+  });</script>

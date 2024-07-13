@@ -1,0 +1,44 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+
+<div id="share-buttons" class="row">
+
+<?php
+// Replace the following URL with the URL you want to share on Facebook
+$shareUrl = $block->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+
+// Share to Facebook
+// Create the Facebook share link
+$facebookShareLink = "https://www.facebook.com/sharer/sharer.php?u=" . urlencode($shareUrl);
+
+// Share to Email
+// Replace the following with your email address and subject
+$recipientEmail = "recipient@example.com";
+$subject = "Check out this link";
+
+// Generate the mailto link with the URL and subject
+$mailtoLink = "mailto:" . $recipientEmail . "?subject=" . urlencode($subject) . "&body=" . urlencode($shareUrl);
+?>
+
+    <div class="col-md-4">
+
+    <!-- Display the "Share to Facebook" button -->
+    <a href="<?php echo $facebookShareLink; ?>" target="_blank">
+        <button class="btn btn-facebook"><span class="fa fa-facebook icon-social"></span> Facebook</button>
+    </a>
+    </div>
+    <div class="col-md-4">
+    <!-- Display the "Share URL via Email" button -->
+    <a href="<?php echo $mailtoLink; ?>">
+        <button class="btn btn-email"><span class="fa fa-envelope icon-social"></span> Email</button>
+    </a>
+    </div>
+
+
+</div>

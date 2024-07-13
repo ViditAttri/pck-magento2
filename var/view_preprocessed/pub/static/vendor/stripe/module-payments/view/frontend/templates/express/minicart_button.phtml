@@ -1,0 +1,26 @@
+<?php if ($block->isEnabled("minicart")) : ?> <div class="stripe-payments-express-minicart"><div id="payment-request-button-minicart" class="payment-request-button"></div><script>
+        require(['domReady!', 'StripeIntegration_Payments/js/stripe_payments_express', 'Magento_Customer/js/customer-data'], function(domReady, stripeExpress, customerData)
+        {
+            var cart = customerData.get('cart');
+            var initECE = function()
+            {
+                var locationDetails = {
+                    location: 'minicart',
+                    activeLocations: <?= $block->getActiveLocations();  ?>,
+                };
+                stripeExpress.initStripeExpress(
+                    '#payment-request-button-minicart',
+                    <?= $block->initParams->getWalletParams();  ?>,
+                    locationDetails,
+                    <?= $block->getButtonConfig();  ?>,
+                    stripeExpress.initMiniCartWidget.bind(stripeExpress)
+                );
+            };
+            initECE();
+
+            cart.subscribe(function ()
+            {
+                
+                setTimeout(initECE, 500);
+            });
+        });</script></div><?php endif; ?>

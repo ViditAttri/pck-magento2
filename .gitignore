@@ -1,0 +1,12 @@
+/pub/media/
+/var/cache/
+/var/page_cache/
+!/composer.lock
+/app/etc/env.php
+/generated/
+/var/log/
+/var/report/
+/var/export/
+/pub/static/
+!/pub/static/.htaccess
+/.htaccess
